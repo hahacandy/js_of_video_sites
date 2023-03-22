@@ -2,6 +2,8 @@
 
 var index = 0;
 
+var randomIndex = -1;
+
 function serachAnime(index){
 	var temp = document.getElementById('anime_' + index);
 	var animeName = temp.childNodes[0].textContent.trim()
@@ -10,8 +12,19 @@ function serachAnime(index){
 }
 
 function searchRandomAnime(){
-	var randomIndex = Math.floor(Math.random() * index);
+	randomIndex = Math.floor(Math.random() * index);
 	serachAnime(randomIndex);
+}
+
+function getSubPageOfRandomAnime(){
+	
+	if(randomIndex != -1){
+		
+		var temp = document.getElementById('anime_' + randomIndex);
+		var url = temp.childNodes[0].childNodes[0].href;
+		window.open(url, "_blank ");
+	}
+	
 }
 
 if(document.querySelector('#breadcrumbs').textContent.includes(' kitsunekko.net \n > Japanese subtitles > ') == false){
@@ -55,6 +68,12 @@ if(document.querySelector('#breadcrumbs').textContent.includes(' kitsunekko.net 
 		addTag3.innerHTML = "Search Random Anime";
 		
 		addTag2.appendChild(addTag3)
+		
+	var addTag4 = document.createElement("button");
+		addTag4.setAttribute('onclick', 'getSubPageOfRandomAnime()');
+		addTag4.innerHTML = "Get sub page of RandoAnime";
+		
+		addTag2.appendChild(addTag4)
 	
 	addTag.appendChild(addTag2);
 	
