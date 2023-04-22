@@ -1,3 +1,19 @@
+//프록시 서버에서의 코드(일본자막사이트는 한국 아이피로 못들어가기 때문에)
+// https://www.proxysite.com/ 사이트에서 
+// 일본자막사이트 로 가야하기 때문에
+// 프록시 사이트의 url 공백에 일본자막 주소를 자동으로 기입해주게
+input_url = setInterval(function() {
+	try{
+	url_input = document.querySelector('#url-form-wrap > form > div.row > input[type=text]');
+	if(url_input.value == ''){
+		url_input.value = 'https://kitsunekko.net/dirlist.php?dir=subtitles/japanese/';
+	}
+	}catch{}
+	
+}, 1000);
+
+
+//일본 애니자막 사이트에서의 코드
 //https://kitsunekko.net/dirlist.php?dir=subtitles%2Fjapanese%2F
 
 var index = 0;
