@@ -22,6 +22,7 @@ var all_anime_num = new Array();
 var index = 0;
 
 var randomIndex = -1;
+var currnet_ani_index = 0;
 
 function serachAnime(index){
 	var temp = document.getElementById('anime_' + index);
@@ -34,20 +35,26 @@ function shuffle(array) {
   array.sort(() => Math.random() - 0.5);
 }
 
-function searchRandomAnime(){
-	randomIndex = all_anime_num.pop();
-	serachAnime(randomIndex);
+function searchPreviousRandomAnime(){
+	if(randomIndex > 0){
+		randomIndex = randomIndex - 1;
+		currnet_ani_index = all_anime_num[randomIndex];
+		serachAnime(currnet_ani_index);
+	}
+}
+
+function searchNextRandomAnime(){
+	if(randomIndex < all_anime_num.length){
+		randomIndex = randomIndex + 1;
+		currnet_ani_index = all_anime_num[randomIndex];
+		serachAnime(currnet_ani_index);
+	}
 }
 
 function getSubPageOfRandomAnime(){
-	
-	if(randomIndex != -1){
-		
-		var temp = document.getElementById('anime_' + randomIndex);
-		var url = temp.childNodes[0].childNodes[0].href;
-		window.open(url, "_blank ");
-	}
-	
+	var temp = document.getElementById('anime_' + currnet_ani_index);
+	var url = temp.childNodes[0].childNodes[0].href;
+	window.open(url, "_blank ");
 }
 
 if(document.querySelector('#breadcrumbs').textContent.includes(' kitsunekko.net \n > Japanese subtitles > ') == false){
@@ -88,19 +95,22 @@ if(document.querySelector('#breadcrumbs').textContent.includes(' kitsunekko.net 
 	
 	var addTag2 = document.createElement("td");
 	addTag2.style.textAlign = "center";
-	addTag2.setAttribute('colspan', 3);
+	addTag2.setAttribute('colspan', 4);
 	
-	var addTag3 = document.createElement("button");
-		addTag3.setAttribute('onclick', 'searchRandomAnime()');
-		addTag3.innerHTML = "Search Random Anime";
+	var temp_addTag = document.createElement("button");
+	temp_addTag.setAttribute('onclick', 'searchPreviousRandomAnime()');
+	temp_addTag.innerHTML = "Search Previous Random Anime";
+	addTag2.appendChild(temp_addTag)
+	
+	var temp_addTag = document.createElement("button");
+	temp_addTag.setAttribute('onclick', 'searchNextRandomAnime()');
+	temp_addTag.innerHTML = "Search Next Random Anime";
+	addTag2.appendChild(temp_addTag)
 		
-		addTag2.appendChild(addTag3)
-		
-	var addTag4 = document.createElement("button");
-		addTag4.setAttribute('onclick', 'getSubPageOfRandomAnime()');
-		addTag4.innerHTML = "Get sub page of RandoAnime";
-		
-		addTag2.appendChild(addTag4)
+	var temp_addTag = document.createElement("button");
+	temp_addTag.setAttribute('onclick', 'getSubPageOfRandomAnime()');
+	temp_addTag.innerHTML = "Get sub page of RandoAnime";
+	addTag2.appendChild(temp_addTag)
 	
 	addTag.appendChild(addTag2);
 	
