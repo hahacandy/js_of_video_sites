@@ -1,5 +1,5 @@
 //프록시 서버에서의 코드(일본자막사이트는 한국 아이피로 못들어가기 때문에)
-// https://www.proxysite.com/ 사이트에서 
+// https://*.proxysite.com/ 사이트에서 
 // 일본자막사이트 로 가야하기 때문에
 // 프록시 사이트의 url 공백에 일본자막 주소를 자동으로 기입해주게
 input_url = setInterval(function() {
@@ -7,6 +7,7 @@ input_url = setInterval(function() {
 	url_input = document.querySelector('#url-form-wrap > form > div.row > input[type=text]');
 	if(url_input.value == ''){
 		url_input.value = 'https://kitsunekko.net/dirlist.php?dir=subtitles/japanese/';
+		document.querySelector('#url-form-wrap > form > div.row > button').click();
 	}
 	}catch{}
 	
@@ -15,6 +16,8 @@ input_url = setInterval(function() {
 
 //일본 애니자막 사이트에서의 코드
 //https://kitsunekko.net/dirlist.php?dir=subtitles%2Fjapanese%2F
+
+var all_anime_num = new Array(); 
 
 var index = 0;
 
@@ -27,8 +30,12 @@ function serachAnime(index){
 	window.open('https://www.google.com/search?q=Anime "'+ animeName + '"&tbm=isch', "_top ");
 }
 
+function shuffle(array) {
+  array.sort(() => Math.random() - 0.5);
+}
+
 function searchRandomAnime(){
-	randomIndex = Math.floor(Math.random() * index);
+	randomIndex = all_anime_num.pop();
 	serachAnime(randomIndex);
 }
 
@@ -49,7 +56,7 @@ if(document.querySelector('#breadcrumbs').textContent.includes(' kitsunekko.net 
 	
 	var animeList = document.getElementsByTagName('tr')
 	
-	
+
 	for(var anime of animeList){
 		anime.setAttribute('id', 'anime_'+index);
 		
@@ -64,8 +71,12 @@ if(document.querySelector('#breadcrumbs').textContent.includes(' kitsunekko.net 
 		addTag.innerHTML = "Search";
 		anime.append(addTag);
 		
+		all_anime_num.push(index);  
+		
 		index = index +1;
 	}
+	
+	shuffle(all_anime_num);
 	
 	
 	//create random button
