@@ -27,14 +27,16 @@ function main2(){
 				var enter_users = s_users.filter(it => !latest_s_users.includes(it));
 				
 				for (i = 0; i < enter_users.length; i++) {
-					send_msg('알림: ' + enter_users[i] + ' 님이 입장 하였습니다.')
+					send_msg(new Date().toLocaleString());
+					send_msg(enter_users[i] + ' 님이 입장 하였습니다.')
 					//console.log(enter_users[i]);
 				}
 				
 				var out_users = latest_s_users.filter(it => !s_users.includes(it));
 				
 				for (i = 0; i < out_users.length; i++) {
-					send_msg('알림: ' + out_users[i] + ' 님이 퇴장 하였습니다.')
+					send_msg(new Date().toLocaleString());
+					send_msg(out_users[i] + ' 님이 퇴장 하였습니다.')
 					//console.log(out_users[i]);
 				}
 				
@@ -60,6 +62,7 @@ function main2(){
 	setTimeout(main2, 100);
 	
 }
+
 
 
 setTimeout(main2, 1000);
