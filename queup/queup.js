@@ -26,30 +26,25 @@ function main2(){
 				
 				var enter_users = s_users.filter(it => !latest_s_users.includes(it));
 				
+				
 				for (i = 0; i < enter_users.length; i++) {
-					setTimeout(function(){
-						send_msg(new Date().toLocaleString() + ' ↓');
-					}, 500);
-					setTimeout(function(){
-						send_msg(enter_users[i] + ' 님이 입장 하였습니다.')
-					}, 1000);
 					
+					setTimeout(function(user_name){
+						send_msg('[' + new Date().toLocaleTimeString() + '] ' + user_name + ': 님이 입장 하였습니다.');
+						console.log(enter_users[i] + ' 들어옴' );
+					}, 1000, enter_users[i])
 					
-					//console.log(enter_users[i]);
 				}
 				
 				var out_users = latest_s_users.filter(it => !s_users.includes(it));
 				
 				for (i = 0; i < out_users.length; i++) {
-					setTimeout(function(){
-						send_msg(new Date().toLocaleString() + ' ↓');
-					}, 500);
-					setTimeout(function(){
-						send_msg(out_users[i] + ' 님이 퇴장 하였습니다.')
-					}, 1000);
 					
+					setTimeout(function(user_name){
+						send_msg('[' + new Date().toLocaleTimeString() + '] ' + user_name + ': 님이 퇴장 하였습니다.');
+						console.log(out_users[i] + ' 나감' );
+					}, 1000, out_users[i])
 					
-					//console.log(out_users[i]);
 				}
 				
 			}
