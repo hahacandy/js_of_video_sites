@@ -28,7 +28,7 @@ function serachAnime(index){
 	var temp = document.getElementById('anime_' + index);
 	var animeName = temp.childNodes[0].textContent.trim()
 	
-	window.open('https://www.google.com/search?q=Anime "'+ animeName + '"&tbm=isch',"1", "_top ");
+	window.open('https://www.google.com/search?q=Anime "'+ animeName + '"&tbm=isch', "search", "left=0,top=0,width=700,height=800");
 }
 
 function shuffle(array) {
@@ -54,13 +54,13 @@ function searchNextRandomAnime(){
 function getSubPageOfRandomAnime(){
 	var temp = document.getElementById('anime_' + currnet_ani_index);
 	var url = temp.childNodes[0].childNodes[0].href;
-	window.open(url,"","_blank");
+	window.open(url, "_blank");
 }
 
 function SearchOnStreamingSite(){
 	var temp = document.getElementById('anime_' + currnet_ani_index);
 	var animeName = temp.childNodes[0].textContent.trim();
-	window.open('https://animension.to/search?search_text='+ animeName,"1", "_top ");
+	window.open('https://animension.to/search?search_text='+ animeName, "search", "left=0,top=0,width=700,height=800");
 }
 
 if(document.querySelector('#breadcrumbs').textContent.includes(' kitsunekko.net \n > Japanese subtitles > ') == false){
