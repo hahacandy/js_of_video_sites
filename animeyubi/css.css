@@ -1,0 +1,22 @@
+  #react-body > nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    background-color: black;
+    color: white;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+
+  #react-body > nav.hidden {
+    transform: translateY(-100%);
+  }
+
+  #react-body > nav.visible {
+    transform: translateY(0);
+  }
+  
+  #anime-episode-video {
+  height: 60rem;
+}
