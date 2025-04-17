@@ -16,7 +16,3 @@
   #react-body > nav.visible {
     transform: translateY(0);
   }
-  
-  #anime-episode-video {
-  height: 60rem;
-}

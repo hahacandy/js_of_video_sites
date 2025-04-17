@@ -92,3 +92,12 @@ var checkInterval = setInterval(function () {
   }
 }, 1000);
 
+/////////////////////////////////
+
+  setInterval(() => {
+    const videoElement = document.getElementById("anime-episode-video");
+    if (videoElement) {
+      videoElement.style.height = "60rem";
+      clearInterval(intervalId);
+    }
+  }, 1000);
