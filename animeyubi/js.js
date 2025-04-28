@@ -25,8 +25,8 @@ window.addEventListener('load', updateNavBottom);
 window.addEventListener('resize', updateNavBottom);
 
 // 마우스 포인터 위치 기준
-const showThresholdMin = 2;        // 상단 얼마나 지나야 나타날지
-const showThresholdExtra = 75;      // nav 하단으로부터 허용 범위
+const showThresholdMin = 5;        // 상단 얼마나 지나야 나타날지
+const showThresholdExtra = 65;      // nav 하단으로부터 허용 범위
 
 window.addEventListener('mousemove', (e) => {
   const y = e.clientY;
